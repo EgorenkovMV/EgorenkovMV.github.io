@@ -1,65 +1,78 @@
 /* OVERALL STYLES */
 
+:root {
+    --page-max-width: 1242px;
+    --content-max-width: 1170px;
+    --surface-radius: 20px;
+    --section-gap: 72px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
+    min-width: 320px;
     background-color: #FAFAFA;
+    color: #4D4D4D;
 }
 
 .neomorph {
-    border-radius: 20px;
+    border-radius: var(--surface-radius);
     background: linear-gradient(138deg, #F0F0F3 0%, #FAFAFA 100%);
-    box-shadow: -10px -10px 30px 0px #FFF, 10px 10px 30px 0px rgba(174, 174, 192, 0.40);
+    box-shadow: -10px -10px 30px 0 #FFF, 10px 10px 30px 0 rgba(174, 174, 192, 0.40);
 }
 
 h1 {
     color: #4D4D4D;
-    font-family: Montserrat;
-    font-size: 40px;
+    font-family: Montserrat, sans-serif;
+    font-size: clamp(2rem, 1.55rem + 1.4vw, 2.5rem);
     font-style: normal;
     font-weight: 700;
-    line-height: 48px; /* 120% */
+    line-height: 1.2;
 }
 
 h3 {
     color: #4D4D4D;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
     text-transform: uppercase;
 }
 
 p {
     margin-bottom: 12px;
     color: #4D4D4D;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
 }
 
 .textbold {
     color: #4D4D4D;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
 }
 
 .caption {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
-    line-height: 12px; /* 100% */
+    line-height: 1.2;
     color: #909090;
 }
 
@@ -67,6 +80,7 @@ p {
     position: relative;
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
     margin: auto;
 }
 
@@ -75,125 +89,140 @@ a {
     text-decoration: none;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 /* HEADER STYLES */
 
+header,
+main,
+footer {
+    width: min(calc(100% - 32px), var(--page-max-width));
+    margin-left: auto;
+    margin-right: auto;
+}
+
 header {
-    width: 1242px;
-    height: 130px;
-    position: relative;
-    left: 0%;
-    right: 0%;
-    margin: auto;
+    padding-top: 24px;
 }
 
 #nav {
-    position: absolute;
-    width: 1242px;
-    height: 84px;
-    left: 0;
-    right: 0;
-    margin: 24px auto;
+    min-height: 84px;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+#nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+    list-style: none;
 }
 
 li.nav {
-    display: inline-block;
-    margin: 33px 0px auto 36px;
+    margin: 0;
     color: #4D4D4D;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
     text-transform: uppercase;
 }
 
 .navlogo {
-    position: absolute;
-    margin: 30px 521px 29px 521px;
+    width: 200px;
+    height: auto;
+    flex-shrink: 0;
 }
 
-/* LANDING STYLES */
+/* MAIN / SECTION STYLES */
 
 main {
-    position: relative;
-    width: 1242px;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
     overflow: visible;
 }
 
 section {
-    margin: 72px auto;
-    position: relative;
-    width: 1170px;
-    left: 0;
-    right: 0;
+    width: min(100%, var(--content-max-width));
+    margin: var(--section-gap) auto;
     overflow: visible;
+}
+
+/* LANDING STYLES */
+
+.seclanding {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
 }
 
 .landingtext {
-    display: inline-block;
-    vertical-align: top;
-    width: 366px;
-    height: 700px;
-    margin: 0;
+    width: min(100%, 366px);
+    min-width: 0;
 }
 
 .landinglogo {
-    width: 263px;
-    height: 149px;
-    margin: 72px 0 0;
+    width: min(100%, 263px);
+    margin: 24px 0 0;
 }
 
 .landingtitle {
-    width: 366px;
-    margin-top: 72px;
+    width: 100%;
+    margin-top: 48px;
 }
 
 #landingbutton {
-    margin-top: 72px;
+    display: inline-block;
+    margin-top: 48px;
     width: fit-content;
     height: fit-content;
-    padding: 18px 36px 16px 36px;
+    padding: 18px 36px 16px;
 }
 
 #landingpic {
-    display: inline-block;
-    vertical-align: top;
+    flex: 1 1 520px;
+    width: 100%;
+    min-height: 520px;
     background-image: url(links/landingpic.png);
     background-repeat: no-repeat;
     background-size: contain;
-    width: 800px;
-    height: 800px;
-    margin: 0px;
+    background-position: center;
     overflow: visible;
 }
 
-/* BIO STYLES*/
+/* BIO STYLES */
 
-#secbio {
-    margin: 72px auto;
-    width: 1170px;
-    position: relative;
-    left: 0%;
-    right: 0%;
+#biodash {
+    display: flex;
+    align-items: stretch;
+    gap: 36px;
+    margin-top: 48px;
+}
+
+#biomain,
+.formgroups {
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 #biomain {
-    display: inline-block;
-    vertical-align: top;
-    width: 567px;
-    height: 480px;
-    margin: 48px 36px 48px 0px;
+    min-height: 480px;
     padding: 33px 36px 36px;
 }
 
 #prepod {
-    width: 224px;
-    margin: 36px 0px 0px;
+    width: min(100%, 300px);
+    margin-top: 36px;
 }
 
 #avatar {
@@ -209,7 +238,7 @@ section {
 
 #prepodname {
     display: inline-block;
-    width: 125px;
+    width: calc(100% - 96px);
     vertical-align: middle;
 }
 
@@ -218,72 +247,64 @@ section {
 }
 
 .formgroups {
-    display: inline-block;
-    vertical-align: top;
-    width: 563px;
-    height: 480px;
-    margin: 48px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
 }
 
-#form {
-    width: 563px;
-    height: 216px;
-    margin: 0px 0px 48px 0px;
-    padding: 33px 36px 36px;
-    overflow: hidden;
-}
-
+#form,
 #groups {
-    width: 563px;
-    height: 216px;
-    margin: 0px;
+    min-height: 216px;
     padding: 33px 36px 36px;
     overflow: hidden;
 }
 
-#formttl {
+#formttl,
+#groupsttl {
     width: 157px;
 }
 
-#groupsttl {
-    width: 157PX;
-}
-
 #formpic {
-    width: 486px;
+    width: min(100%, 486px);
     height: 324px;
     top: -100px;
-    left: 180px;
+    left: min(30%, 180px);
     background-image: url(links/form.png);
 }
 
 #groupspic {
-    width: 515px;
+    width: min(100%, 515px);
     height: 407px;
     top: -80px;
-    left: 70px;
+    left: min(16%, 70px);
     background-image: url(links/groups.png);
 }
 
 /* AGE STYLES */
 
 .learnfit {
-    margin: 60px 0px;
+    margin: 60px 0;
+}
+
+.learnfit > h1 {
+    max-width: 780px;
 }
 
 .ages {
-    width: 1242px;
-    height: 228px;
-    margin: 48px auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    margin: 48px auto 0;
 }
 
 .agetags {
-    margin: 18px 0px;
+    margin: 18px 0;
 }
 
 .tag {
     width: fit-content;
-    padding: 0px 12px 1px;
+    padding: 0 12px 1px;
     margin-bottom: 12px;
     font-size: 12px;
     line-height: 24px;
@@ -321,11 +342,10 @@ p#textyellow {
     color: #FEBE10;
 }
 
-#child {
-    display: inline-block;
-    vertical-align: top;
-    width: 364px;
-    height: 228px;
+#child,
+#school,
+#adult {
+    min-height: 228px;
     padding: 33px 36px 36px;
     overflow: hidden;
 }
@@ -334,87 +354,60 @@ p#textyellow {
     width: 105px;
     height: 187px;
     top: -160px;
-    left: 125px;
+    left: clamp(110px, 38%, 125px);
     background-image: url(links/child.png);
-}
-
-#school {
-    display: inline-block;
-    vertical-align: top;
-    width: 364px;
-    height: 228px;
-    margin-left: 35px;
-    padding: 33px 36px 36px;
-    overflow: hidden;
 }
 
 #schoolpic {
     width: 126px;
     height: 373px;
     top: -160px;
-    left: 110px;
+    left: clamp(96px, 34%, 110px);
     background-image: url(links/school.png);
-}
-
-#adult {
-    display: inline-block;
-    vertical-align: top;
-    width: 364px;
-    height: 228px;
-    margin-left: 35px;
-    padding: 33px 36px 36px;
-    overflow: hidden;
 }
 
 #adultpic {
     width: 172px;
     height: 555px;
     top: -200px;
-    left: 100px;
+    left: clamp(72px, 28%, 100px);
     background-image: url(links/adult.png);
 }
 
 /* COURSE STYLES */
 
-#seccatalogue {
-    margin: 72px auto;
-    width: 1170px;
-    position: relative;
-    left: 0%;
-    right: 0%;
-}
-
-#course1, #course2, #course3, #course4 {
-    width: 567px;
-    height: 420px;
-    display: inline-block;
-    vertical-align: top;
+#course1,
+#course2,
+#course3,
+#course4 {
+    width: 100%;
+    min-height: 420px;
     padding: 36px;
 }
 
-#course1, #course3 {
-    margin: 48px 32px 0px 0px;
-}
-
-#course2, #course4 {
-    margin: 48px 0px 0px;
+.courses {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    margin-top: 48px;
 }
 
 #courseabout {
-    margin: 36px 0px;
+    margin: 36px 0;
     color: #909090;
 }
 
 .coursetags {
-    width: 360px;
+    width: 100%;
+    max-width: 360px;
 }
 
 .tag2 {
     display: inline-block;
     vertical-align: top;
     width: fit-content;
-    padding: 0px 12px 1px;
-    margin: 0px 8px 12px 0px;
+    padding: 0 12px 1px;
+    margin: 0 8px 12px 0;
     font-size: 12px;
     line-height: 24px;
     font-weight: 400;
@@ -422,95 +415,100 @@ p#textyellow {
     border-radius: 20px;
 }
 
-#tagred {background-color: #EF3E2D;}
-#taggreen {background-color: #42A240;}
-#tagblue {background-color: #008FCA;}
-#tagviolet {background-color: #662D91;}
-#tagyellow {background-color: #FEBE10;}
+#tagred { background-color: #EF3E2D; }
+#taggreen { background-color: #42A240; }
+#tagblue { background-color: #008FCA; }
+#tagviolet { background-color: #662D91; }
+#tagyellow { background-color: #FEBE10; }
 
 #thintext {
     font-weight: 500;
 }
 
+#course1pic,
+#course2pic,
+#course3pic,
+#course4pic {
+    top: -100px;
+}
+
 #course1pic {
     width: 152px;
     height: 111px;
-    left: 170px;
-    top: -100px;
+    left: clamp(120px, 42%, 170px);
     background-image: url(links/course1.svg);
 }
 
 #course2pic {
     width: 113px;
     height: 113px;
-    left: 180px;
-    top: -100px;
+    left: clamp(140px, 44%, 180px);
     background-image: url(links/course2.svg);
 }
 
 #course3pic {
     width: 113px;
     height: 113px;
-    left: 185px;
-    top: -100px;
+    left: clamp(140px, 44%, 185px);
     background-image: url(links/course3.png);
 }
 
 #course4pic {
     width: 130px;
     height: 119px;
-    left: 185px;
-    top: -100px;
+    left: clamp(140px, 44%, 185px);
     background-image: url(links/course4.svg);
 }
 
 /* CONTACT STYLES */
 
 #seccontact {
-    margin: 72px auto;
-    width: 1170px;
-    position: relative;
-    left: 0%;
-    right: 0%;
+    display: flex;
+    align-items: stretch;
+    gap: 36px;
+}
+
+#map,
+.contactinfo {
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 #map {
-    width: 567px;
-    height: 564px;
-    display: inline-block;
-    vertical-align: top;
+    min-height: 564px;
     padding: 36px;
 }
 
 .contactinfo {
-    width: 563px;
-    height: 564px;
-    margin-left: 36px;
-    display: inline-block;
-    vertical-align: top;
+    min-height: 564px;
 }
 
 #map h1 {
     margin-bottom: 24px;
 }
 
-#mappic {
-    width: 487px;
-    height: 347px;
+#map iframe {
+    width: 100%;
+    max-width: 100%;
+    min-height: 340px;
     margin-top: 24px;
-    position: static;
+    border: 0;
     border-radius: 20px;
-    background-image: url(links/mappic.png);
 }
 
 #contactabout {
-    margin: 24px 0px;
+    margin: 24px 0;
     color: #909090;
 }
 
-#phone, #telegram, #whatsapp {
-    margin: 24px 0px;
-    padding: 6px 12px;
+#phone,
+#telegram,
+#whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 24px 0 0;
+    padding: 10px 14px;
     width: fit-content;
     height: fit-content;
 }
@@ -518,7 +516,7 @@ p#textyellow {
 .contactinfo h3 {
     display: inline-block;
     vertical-align: middle;
-    margin-left: 6px;
+    margin-left: 0;
 }
 
 .contactinfo .insidepic {
@@ -526,6 +524,7 @@ p#textyellow {
     vertical-align: middle;
     width: 24px;
     min-height: 24px;
+    margin: 0;
 }
 
 #phonepic {
@@ -543,13 +542,9 @@ p#textyellow {
 /* FOOTER STYLES */
 
 footer {
-    width: 1242px;
-    height: 144px;
-    position: relative;
-    left: 0%;
-    right: 0%;
-    margin: 72px auto auto;
-    border-radius: 20px 20px 0px 0px;
+    min-height: 144px;
+    margin: 72px auto 0;
+    border-radius: 20px 20px 0 0;
     padding: 36px;
     background: #909090;
 }
@@ -557,6 +552,164 @@ footer {
 #footerlogo {
     width: 107px;
     height: 61px;
-    position: static;
     background-image: url(links/footerlogo.svg);
+}
+
+/* TABLET */
+
+@media (max-width: 1024px) {
+    #nav {
+        padding: 20px 24px;
+    }
+
+    .seclanding,
+    #biodash,
+    #seccontact {
+        flex-direction: column;
+    }
+
+    .landingtext,
+    #biomain,
+    .formgroups,
+    #map,
+    .contactinfo {
+        width: 100%;
+    }
+
+    #landingpic {
+        min-height: 420px;
+    }
+
+    .ages,
+    .courses {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 720px) {
+    :root {
+        --section-gap: 56px;
+    }
+
+    header,
+    main,
+    footer {
+        width: min(calc(100% - 20px), var(--page-max-width));
+    }
+
+    #nav {
+        padding: 18px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #nav ul {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 12px 18px;
+    }
+
+    li.nav {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    section {
+        width: 100%;
+    }
+
+    .landinglogo {
+        margin-top: 8px;
+    }
+
+    .landingtitle,
+    #landingbutton {
+        margin-top: 32px;
+    }
+
+    #landingbutton {
+        padding: 16px 20px 14px;
+    }
+
+    #landingpic {
+        min-height: 280px;
+    }
+
+    #biomain,
+    #form,
+    #groups,
+    #child,
+    #school,
+    #adult,
+    #course1,
+    #course2,
+    #course3,
+    #course4,
+    #map {
+        min-height: auto;
+        padding: 24px 20px;
+    }
+
+    .formgroups {
+        gap: 24px;
+    }
+
+    .learnfit {
+        margin: 48px 0 0;
+    }
+
+    .ages,
+    .courses {
+        margin-top: 32px;
+        gap: 20px;
+    }
+
+    #formttl,
+    #groupsttl,
+    .coursetags {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    #formpic,
+    #groupspic,
+    #childpic,
+    #schoolpic,
+    #adultpic,
+    #course1pic,
+    #course2pic,
+    #course3pic,
+    #course4pic {
+        position: static;
+        width: 100%;
+        max-width: 220px;
+        height: 160px;
+        margin: 20px auto 0;
+    }
+
+    #childpic,
+    #schoolpic,
+    #adultpic {
+        height: 180px;
+    }
+
+    #map iframe {
+        min-height: 280px;
+    }
+
+    .contactinfo {
+        min-height: auto;
+    }
+
+    .contactinfo h3 {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    footer {
+        min-height: auto;
+        padding: 28px 20px;
+    }
 }
